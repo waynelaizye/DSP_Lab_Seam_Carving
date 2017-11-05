@@ -5,11 +5,3 @@ function res = energyRGB(I)
 % res = 
 end
 
-function res = energyGrey(I)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% returns energy of all pixelels
-% e = |dI/dx| + |dI/dy|
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% res = 
-end
-
