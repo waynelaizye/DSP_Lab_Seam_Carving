@@ -76,7 +76,7 @@ by S. Avidan & A. Shamir. In contract to stretching, content-aware resizing allo
     ```
     * Description
     
-    This function is to reduce the image by the seam mask.
+    This function is to remove the seam with the seam mask.
 
 ### Results
 
@@ -89,7 +89,7 @@ by S. Avidan & A. Shamir. In contract to stretching, content-aware resizing allo
 </tr>
 <tr>
 <td>
-<img src="../data/sea.jpg"/>
+<img src="../data/sea.jpg" height="20%"/>
 </td>
 <td>
 <img src="sea_seam.jpg"/>
@@ -148,3 +148,8 @@ by S. Avidan & A. Shamir. In contract to stretching, content-aware resizing allo
 
 </table>
 
+### Conclusion
+As the results show, we can see that Seam carving is the best way to resize the image. Take plane as example, Seam carving keeps the plane and the cloud, which are important oparts in this picture, but corping only keeps the left part, and scaling squeezes the image.
+
+
+From the church and plane example, we can clearly see that Seam carving keeps theimportant part of the image and removes the unimportant part, while other two ways either squeeze the image or remove the important part. The reason that I think is because when getting the energy function, we caculate its derivation, picking the min means picking the part that has least change. So that line might be something like a background, and removing it still keeps the important part( which has more changes ).
