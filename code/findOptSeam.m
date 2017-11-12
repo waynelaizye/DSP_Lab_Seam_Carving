@@ -22,6 +22,11 @@ function [optSeamMask, seamEnergy] = findOptSeam(energy)
     %%%%%%%%%%%%%%%%%%
     % YOUR CODE HERE:
     %%%%%%%%%%%%%%%%%%
+    for i = 2:sz(1),
+        for j = 2:sz(2)-1,
+            M(i, j) = M(i, j) + min([M(i - 1, j - 1), M(i - 1, j), M(i - 1, j + 1)]);
+        end
+    end
     
     %%%%%%%%%%%%%%%%%%
     % END OF YOUR CODE
@@ -31,7 +36,7 @@ function [optSeamMask, seamEnergy] = findOptSeam(energy)
     % Find the minimum element in the last raw of M
     [val, idx] = min(M(sz(1), :));
     seamEnergy = val;
-    fprintf('Optimal energy: %f',seamEnergy);
+    fprintf('Optimal energy: %f\n',seamEnergy);
     
     % Initial for optimal seam mask
     optSeamMask = zeros(size(energy), 'uint8');
@@ -44,12 +49,18 @@ function [optSeamMask, seamEnergy] = findOptSeam(energy)
     %%%%%%%%%%%%%%%%%%
     % YOUR CODE HERE:
     %%%%%%%%%%%%%%%%%%
+    for i = sz(1):-1:2,
+        optSeamMask(i,idx-1)=1;
+        [~,m] = min([M(i - 1, idx-1 ), M(i - 1, idx), M(i - 1, idx + 1)]);
+        idx = idx + m - 2;
+    end
+    optSeamMask(1,idx-1)=1;
     
     %%%%%%%%%%%%%%%%%%
     % END OF YOUR CODE
     %%%%%%%%%%%%%%%%%%
     
     % convert the mask to logical
-    optSeamMask = ~optSeamMask; 
+    optSeamMask = ~optSeamMask;
     
 end

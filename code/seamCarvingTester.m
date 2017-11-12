@@ -7,10 +7,10 @@
 clear; close all; clc;
 
 %% Load data
-image = imread('../data/sea.jpg');
+image = imread('../data/japan.jpg');
 sz = size(image);
 % resize image to half size
-image = imresize(image, [floor(sz(1)/3), floor(sz(2)/3)]);
+image = imresize(image, [floor(sz(1)/2), floor(sz(2)/2)]);
 sz = size(image);
 figure
 imshow(image)
